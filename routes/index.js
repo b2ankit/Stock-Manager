@@ -15,4 +15,12 @@ router.get('/records',function(req,res,next){
 router.get('/Stocks',function(req,res,next){
   res.render('stocks',{title:'Stock Manager'})
 })
+
+router.get('/login',function(req,res,next){
+  res.render('login',{title:'Stock Manager'})
+})
+
+
+
+
 module.exports = router;
