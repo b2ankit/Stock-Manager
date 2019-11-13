@@ -36,7 +36,7 @@
           <h3>Target of the Year</h3>
         </div>
         <div class="progress">
-            <div class="progress-bar bg-info" style="width:20%; background-color: #5cb85c;">Achieved</div>
+            <div class="progress-bar bg-info" style="width:45%; background-color: #5cb85c;">Achieved</div>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
     <div class="container">
       <div class="jumbotron">
         <div class="buying">
-            <h3>Sell Details per Months</h3>
+            <h3> Total Selling Details per Months</h3>
           </div>
           <canvas id="lineChart" ></canvas>
       </div>
@@ -196,6 +196,8 @@
       data:{
       labels:['January','February','March','April','May','June','July','August','September','October','November','December'],
       datasets:[{
+        borderColor:'#5cb85c',
+        pointBackgroundColor:'#292b2c',
       label:'Cements',
       data:[5000,6000,7000,6500,6000,7000,8200,6500,6700,9000,10000,9500],
       // backgroundColor:['#28AF65','#E7D607','#0783B9','#983558'],
@@ -206,7 +208,7 @@
   },
   options:{
       title:{
-          display:true,
+          display:false,
           text:'Selling List',
           fontSize:20,
           fontColor:'#524D4F',

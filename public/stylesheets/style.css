@@ -36,8 +36,8 @@ a {
   max-width: 600px;
 }
 #barChart{
-  width: 80%;
-  margin-left: 10%;
+  width: 100%;
+  margin-left: 0%;
 }
 #lineChart{
   width: 100%;
@@ -48,10 +48,6 @@ a {
   #pieChart{
     margin-left:0;
     max-width: 500px;
-  }
-  #barChart{
-    width: 100%;
-    margin-left: 0;
   }
 
   
