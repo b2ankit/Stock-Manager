@@ -29,53 +29,23 @@
             </ul>
           </div>
       </nav>
-<!-- code for target bar -->
-      <div class="container">
-        <div class="jumbotron">
-        <div class="targetbar">
-          <h3>Target of the Year</h3>
-        </div>
-        <div class="progress">
-            <div class="progress-bar bg-info" style="width:45%; background-color: #5cb85c;">Achieved</div>
-          </div>
-        </div>
-      </div>
-<!-- Code for Buying details -->
+<!-- Code for Stocks details -->
       <div class="container">
         <div class="jumbotron">
             <div class="buying">
-                <h3>Selling Details</h3>
+                <h3>Available Stocks </h3>
               </div>
               <canvas id="barChart"></canvas>
         </div>
       </div>
 
-<!-- Code for Buying details -->
-    <div class="container">
-        <div class="jumbotron">
-            <div class="buying">
-                <h3>Buying Details</h3>
-              </div>
-              <canvas id="pieChart"></canvas>
-        </div>
-      </div>
-
-<!-- Code for Buying details -->
-    <div class="container">
-      <div class="jumbotron">
-        <div class="buying">
-            <h3> Total Selling Details per Months</h3>
-          </div>
-          <canvas id="lineChart" ></canvas>
-      </div>
-    </div>
 
 
 
 
 
 
-      <footer class="page-footer font-small blue" style="background-color:whitesmoke; position: relative; bottom: 0; width: 100%; ">
+      <footer class="page-footer font-small blue" style="background-color:whitesmoke; position: absolute; bottom: 0; width: 100%; ">
 
             <!-- Copyright -->
             <div class="footer-copyright text-center py-3" style="padding:20px 0 ;">© 2019 Copyright:
@@ -91,7 +61,7 @@
           Chart.defaults.global.defaultFontSize = 15;
           Chart.defaults.global.defaultFontColor = '#777';
           var mybarchart = new Chart(barChart,{
-              type:'bar',
+              type:'horizontalBar',
               data:{
                   labels:['Lafarge','Brila Gold','Dalmia','others'],
                   datasets:[{
@@ -137,102 +107,6 @@
               }
           });
 
-
-
-
-          //code for pie chart
-          var pieChart = document.getElementById('pieChart').getContext('2d');
-
-          var mypiechart = new Chart(pieChart,{
-            type:'doughnut',      //line , pie, doughnut
-          data:{
-              labels:['Lafarge','Brila Gold','Dalmia','others'],
-              datasets:[{
-              label:'Cement',
-              data:[4000,3000,300,150],
-              backgroundColor:['#5cb85c','#f0ad4e','#5bc0de','#292b2c'],
-              hoverBorderWidth:2,
-              hoverBorderColor:'grey',
-           }]
-
-      },
-          options:{
-          title:{
-              display:false,
-              text:'Buying List',
-              fontSize:20,
-              fontColor:'#524D4F',
-          
-          },
-          legend:{
-              display:true,
-              position:'right',
-          },
-
-          layout:{
-              padding:{
-                  left:50,
-                  right:0,
-                  top:20,
-                  bottom:20
-               }
-          },
-      options: {
-               responsive: true
-              },
-  }
-});
-
-
-
-
-
-  //code for Line charts
-    var lineChart = document.getElementById('lineChart').getContext('2d');
-
-    var mylinechart = new Chart(lineChart,{
-      type:'line',      //line , pie, doughnut
-      lineColor:'green',
-      data:{
-      labels:['January','February','March','April','May','June','July','August','September','October','November','December'],
-      datasets:[{
-        borderColor:'#5cb85c',
-        pointBackgroundColor:'#292b2c',
-      label:'Cements',
-      data:[5000,6000,7000,6500,6000,7000,8200,6500,6700,9000,10000,9500],
-      // backgroundColor:['#28AF65','#E7D607','#0783B9','#983558'],
-      // hoverBorderWidth:2,
-      // hoverBorderColor:'grey',
-  }]
-
-  },
-  options:{
-      title:{
-          display:false,
-          text:'Selling List',
-          fontSize:20,
-          fontColor:'#524D4F',
-
-      },
-  legend:{
-      display:false,
-      position:'right',
-  },
-
-  layout:{
-      padding:{
-          left:50,
-          right:0,
-          top:20,
-          bottom:20
-       },
-      
-  },
-  options: {
-       responsive: true
-      },
-}
-});
   </script>
   </body>
 </html>

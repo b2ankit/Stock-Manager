@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- Chart CDN link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Link Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+      <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#" style="color: white;"><div class="head1">Om Construction</div></a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/records">Records</a></li>
+              <li><a href="/Stocks">Stocks Available</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="padding-right: 20px;"><a href="#" style="color: #5bc0de;"><span class="glyphicon glyphicon-log-in" style="color:#5bc0de"></span> Login</a></li>
+            </ul>
+          </div>
+      </nav>
+
+
+<!-- Code for Lafarge Details details -->
+    <div class="container">
+      <div class="jumbotron">
+        <div class="buying">
+            <h3 style="color: green;">Lafarge cement per month details</h3>
+          </div>
+          <canvas id="lafargeChart" ></canvas>
+      </div>
+    </div>
+
+<!-- Code for Birla Details details -->
+<div class="container">
+        <div class="jumbotron">
+          <div class="buying">
+              <h3 style="color: #f0ad4e;">Birla cement per month details</h3>
+            </div>
+            <canvas id="birlaChart" ></canvas>
+        </div>
+      </div>
+
+
+<!-- Code for Dalmia Details details -->
+<div class="container">
+        <div class="jumbotron">
+          <div class="buying">
+              <h3 style="color:#5d5ca0;">Dalmia cement per month details</h3>
+            </div>
+            <canvas id="dalmiaChart" ></canvas>
+        </div>
+      </div>
+
+
+<!-- Code for others Details details -->
+<div class="container">
+        <div class="jumbotron">
+          <div class="buying">
+              <h3 style="color:#292b2c;">Others cement per month details</h3>
+            </div>
+            <canvas id="otherChart" ></canvas>
+        </div>
+      </div>
+
+
+
+
+
+      <footer class="page-footer font-small blue" style="background-color:whitesmoke; position: relative; bottom: 0; width: 100%; ">
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3" style="padding:20px 0 ;">© 2019 Copyright:
+              <a href="#"> Ankit Kumar</a>
+            </div>
+            <!-- Copyright -->
+          
+      </footer>
+
+<script>
+  
+          Chart.defaults.global.defaultFontFamily = 'Lato';
+          Chart.defaults.global.defaultFontSize = 15;
+          Chart.defaults.global.defaultFontColor = '#777';
+// lafarge code of bargraph.........
+
+          var lafargeChart = document.getElementById('lafargeChart').getContext('2d');
+          var mylafargechart = new Chart(lafargeChart,{
+              type:'bar',
+              data:{
+                  labels:['January','February','March','April','May','June','July','August','September','October','November','December'],
+                  datasets:[{
+                      label:'Laferge ',
+                      barPercentage: 0.5,
+                      barThickness: 6,
+                      maxBarThickness: 8,
+                      minBarLength: 2,
+                      data:[5000,6000,7000,6500,6000,7000,8200,6500,6700,9000,10000,9500],
+                    //   backgroundColor:['#5cb35c','#f1ad4e','#5bc5de','#212b11','#5cb85c','#f0ad4e','#5bc0de','#292b2c','#51b854','#f1bd2e','#4b101e','#202c2b'],
+                    backgroundColor:['#0275d8','#5cb85c','#5bc0de','#f0ad4e','#d9534f','#292b2c','#0275d8','#5cb85c','#5bc0de','#f0ad4e','#d9534f','#292b2c'],
+                      
+                      hoverBorderWidth:2,
+                      hoverBorderColor:'grey',
+                  }]
+
+              },
+              options:{
+                  title:{
+                      display:false,
+                      text:'Buying List',
+                      fontSize:20,
+                      fontColor:'#524D4F',
+                      
+                  },
+                  legend:{
+                      display:false,
+                      position:'right',
+                      labels:{
+                          fontColor:'#000'
+                      }
+                  },
+
+                  layout:{
+                      padding:{
+                          left:50,
+                          right:0,
+                          top:20,
+                          bottom:20
+                      }
+                  },
+                  tooltips:{
+                  enabled:true
+                  },
+                  options: {
+                           responsive: true
+                          },
+              }
+          });
+
+
+// Birla Gold Code of Bargraph
+
+var birlaChart = document.getElementById('birlaChart').getContext('2d');
+          var mybirlachart = new Chart(birlaChart,{
+              type:'bar',
+              data:{
+                  labels:['January','February','March','April','May','June','July','August','September','October','November','December'],
+                  datasets:[{
+                      label:'Birla ',
+                      barPercentage: 0.5,
+                      barThickness: 6,
+                      maxBarThickness: 8,
+                      minBarLength: 2,
+                      data:[5000,6000,7000,6500,6000,7000,8200,6500,6700,9000,10000,9500],
+                    //   backgroundColor:['#5cb35c','#f1ad4e','#5bc5de','#212b11','#5cb85c','#f0ad4e','#5bc0de','#292b2c','#51b854','#f1bd2e','#4b101e','#202c2b'],
+                    backgroundColor:['#0275d8','#5cb85c','#5bc0de','#f0ad4e','#d9534f','#292b2c','#0275d8','#5cb85c','#5bc0de','#f0ad4e','#d9534f','#292b2c'],
+                      
+                      hoverBorderWidth:2,
+                      hoverBorderColor:'grey',
+                  }]
+
+              },
+              options:{
+                  title:{
+                      display:false,
+                      text:'Buying List',
+                      fontSize:20,
+                      fontColor:'#524D4F',
+                      
+                  },
+                  legend:{
+                      display:false,
+                      position:'right',
+                      labels:{
+                          fontColor:'#000'
+                      }
+                  },
+
+                  layout:{
+                      padding:{
+                          left:50,
+                          right:0,
+                          top:20,
+                          bottom:20
+                      }
+                  },
+                  tooltips:{
+                  enabled:true
+                  },
+                  options: {
+                           responsive: true
+                          },
+              }
+          });
+
+
+//Dalmia code for bargraph
+
+
+var dalmiaChart = document.getElementById('dalmiaChart').getContext('2d');
+          var mydalmiachart = new Chart(dalmiaChart,{
+              type:'bar',
+              data:{
+                  labels:['January','February','March','April','May','June','July','August','September','October','November','December'],
+                  datasets:[{
+                      label:'Dalmia ',
+                      barPercentage: 0.5,
+                      barThickness: 6,
+                      maxBarThickness: 8,
+                      minBarLength: 2,
+                      data:[5000,6000,7000,6500,6000,7000,8200,6500,6700,9000,10000,9500],
+                    //   backgroundColor:['#5cb35c','#f1ad4e','#5bc5de','#212b11','#5cb85c','#f0ad4e','#5bc0de','#292b2c','#51b854','#f1bd2e','#4b101e','#202c2b'],
+                    backgroundColor:['#0275d8','#5cb85c','#5bc0de','#f0ad4e','#d9534f','#292b2c','#0275d8','#5cb85c','#5bc0de','#f0ad4e','#d9534f','#292b2c'],
+                      
+                      hoverBorderWidth:2,
+                      hoverBorderColor:'grey',
+                  }]
+
+              },
+              options:{
+                  title:{
+                      display:false,
+                      text:'Buying List',
+                      fontSize:20,
+                      fontColor:'#524D4F',
+                      
+                  },
+                  legend:{
+                      display:false,
+                      position:'right',
+                      labels:{
+                          fontColor:'#000'
+                      }
+                  },
+
+                  layout:{
+                      padding:{
+                          left:50,
+                          right:0,
+                          top:20,
+                          bottom:20
+                      }
+                  },
+                  tooltips:{
+                  enabled:true
+                  },
+                  options: {
+                           responsive: true
+                          },
+              }
+          });
+
+
+// Others cements details code
+var otherChart = document.getElementById('otherChart').getContext('2d');
+          var myotherchart = new Chart(otherChart,{
+              type:'bar',
+              data:{
+                  labels:['January','February','March','April','May','June','July','August','September','October','November','December'],
+                  datasets:[{
+                      label:'Others ',
+                      barPercentage: 0.5,
+                      barThickness: 6,
+                      maxBarThickness: 8,
+                      minBarLength: 2,
+                      data:[5000,6000,7000,6500,6000,7000,8200,6500,6700,9000,10000,9500],
+                    //   backgroundColor:['#5cb35c','#f1ad4e','#5bc5de','#212b11','#5cb85c','#f0ad4e','#5bc0de','#292b2c','#51b854','#f1bd2e','#4b101e','#202c2b'],
+                    backgroundColor:['#0275d8','#5cb85c','#5bc0de','#f0ad4e','#d9534f','#292b2c','#0275d8','#5cb85c','#5bc0de','#f0ad4e','#d9534f','#292b2c'],
+                      
+                      hoverBorderWidth:2,
+                      hoverBorderColor:'grey',
+                  }]
+
+              },
+              options:{
+                  title:{
+                      display:false,
+                      text:'Buying List',
+                      fontSize:20,
+                      fontColor:'#524D4F',
+                      
+                  },
+                  legend:{
+                      display:false,
+                      position:'right',
+                      labels:{
+                          fontColor:'#000'
+                      }
+                  },
+
+                  layout:{
+                      padding:{
+                          left:50,
+                          right:0,
+                          top:20,
+                          bottom:20
+                      }
+                  },
+                  tooltips:{
+                  enabled:true
+                  },
+                  options: {
+                           responsive: true
+                          },
+              }
+          });
+
+</script>
+</body>
+</html>
