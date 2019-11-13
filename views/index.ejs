@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- Chart CDN link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Link Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+      <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#" style="color: white;"><div class="head1">Om Construction</div></a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Records</a></li>
+              <li><a href="#">Stocks Available</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="padding-right: 20px;"><a href="#" style="color: #5bc0de;"><span class="glyphicon glyphicon-log-in" style="color:#5bc0de"></span> Login</a></li>
+            </ul>
+          </div>
+      </nav>
+<!-- code for target bar -->
+      <div class="container">
+        <div class="jumbotron">
+        <div class="targetbar">
+          <h3>Target of the Year</h3>
+        </div>
+        <div class="progress">
+            <div class="progress-bar bg-info" style="width:20%; background-color: #5cb85c;">Achieved</div>
+          </div>
+        </div>
+      </div>
+<!-- Code for Buying details -->
+      <div class="container">
+        <div class="jumbotron">
+            <div class="buying">
+                <h3>Selling Details</h3>
+              </div>
+              <canvas id="barChart"></canvas>
+        </div>
+      </div>
+
+<!-- Code for Buying details -->
+    <div class="container">
+        <div class="jumbotron">
+            <div class="buying">
+                <h3>Buying Details</h3>
+              </div>
+              <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+
+<!-- Code for Buying details -->
+    <div class="container">
+      <div class="jumbotron">
+        <div class="buying">
+            <h3>Sell Details per Months</h3>
+          </div>
+          <canvas id="lineChart" ></canvas>
+      </div>
+    </div>
+
+
+
+
+
+
+      <footer class="page-footer font-small blue" style="background-color:whitesmoke; position: relative; bottom: 0; width: 100%; ">
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3" style="padding:20px 0 ;">© 2019 Copyright:
+              <a href="#"> Ankit Kumar</a>
+            </div>
+            <!-- Copyright -->
+          
+      </footer>
+
+      <script>
+          var barChart = document.getElementById('barChart').getContext('2d');
+          Chart.defaults.global.defaultFontFamily = 'Lato';
+          Chart.defaults.global.defaultFontSize = 15;
+          Chart.defaults.global.defaultFontColor = '#777';
+          var mybarchart = new Chart(barChart,{
+              type:'bar',
+              data:{
+                  labels:['Lafarge','Brila Gold','Dalmia','others'],
+                  datasets:[{
+                      label:'Cement',
+                      data:[4000,2500,300,150],
+                      backgroundColor:['#5cb85c','#f0ad4e','#5bc0de','#292b2c'],
+                      
+                      hoverBorderWidth:2,
+                      hoverBorderColor:'grey',
+                  }]
+
+              },
+              options:{
+                  title:{
+                      display:false,
+                      text:'Buying List',
+                      fontSize:20,
+                      fontColor:'#524D4F',
+                      
+                  },
+                  legend:{
+                      display:false,
+                      position:'right',
+                      labels:{
+                          fontColor:'#000'
+                      }
+                  },
+
+                  layout:{
+                      padding:{
+                          left:50,
+                          right:0,
+                          top:20,
+                          bottom:20
+                      }
+                  },
+                  tooltips:{
+                  enabled:true
+                  },
+                  options: {
+                           responsive: true
+                          },
+              }
+          });
+
+
+
+
+          //code for pie chart
+          var pieChart = document.getElementById('pieChart').getContext('2d');
+
+          var mypiechart = new Chart(pieChart,{
+            type:'doughnut',      //line , pie, doughnut
+          data:{
+              labels:['Lafarge','Brila Gold','Dalmia','others'],
+              datasets:[{
+              label:'Cement',
+              data:[4000,3000,300,150],
+              backgroundColor:['#5cb85c','#f0ad4e','#5bc0de','#292b2c'],
+              hoverBorderWidth:2,
+              hoverBorderColor:'grey',
+           }]
+
+      },
+          options:{
+          title:{
+              display:false,
+              text:'Buying List',
+              fontSize:20,
+              fontColor:'#524D4F',
+          
+          },
+          legend:{
+              display:true,
+              position:'right',
+          },
+
+          layout:{
+              padding:{
+                  left:50,
+                  right:0,
+                  top:20,
+                  bottom:20
+               }
+          },
+      options: {
+               responsive: true
+              },
+  }
+});
+
+
+
+
+
+  //code for Line charts
+    var lineChart = document.getElementById('lineChart').getContext('2d');
+
+    var mylinechart = new Chart(lineChart,{
+      type:'line',      //line , pie, doughnut
+      lineColor:'green',
+      data:{
+      labels:['January','February','March','April','May','June','July','August','September','October','November','December'],
+      datasets:[{
+      label:'Cements',
+      data:[5000,6000,7000,6500,6000,7000,8200,6500,6700,9000,10000,9500],
+      // backgroundColor:['#28AF65','#E7D607','#0783B9','#983558'],
+      // hoverBorderWidth:2,
+      // hoverBorderColor:'grey',
+  }]
+
+  },
+  options:{
+      title:{
+          display:true,
+          text:'Selling List',
+          fontSize:20,
+          fontColor:'#524D4F',
+
+      },
+  legend:{
+      display:false,
+      position:'right',
+  },
+
+  layout:{
+      padding:{
+          left:50,
+          right:0,
+          top:20,
+          bottom:20
+       },
+      
+  },
+  options: {
+       responsive: true
+      },
+}
+});
+  </script>
+  </body>
+</html>
