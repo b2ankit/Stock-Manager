@@ -25,7 +25,20 @@
               <li><a href="/Stocks">Stocks Available</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li style="padding-right: 20px;"><a href="/login" style="color: #5bc0de;"><span class="glyphicon glyphicon-log-in" style="color:#5bc0de"></span> Login</a></li>
+                <!-- <li style="padding-right: 20px;"><a href="/login" style="color: #5bc0de;"><span class="glyphicon glyphicon-log-in" style="color:#5bc0de"></span> Login</a></li> -->
+
+                <%if(username!=null){%>
+                  <li style="padding-right: 20px;" class="drop"><a href="/signup" class="dropdown-toggle" data-toggle="dropdown" style="color: #5bc0de;"><span class="glyphicon glyphicon-user" style="color: #5bc0de;" ></span> <%=username%></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Insert Records</a></li>
+                      <li><a href="#">Show Records</a></li>
+                      <li><a href="/logout">Logout</a></li>
+                    </ul>
+                  </li>
+                  <%}%>
+                  <%if(username==null){%>
+                    <li style="padding-right: 20px;"><a href="/login" style="color: #5bc0de;"><span class="glyphicon glyphicon-log-in" style="color:#5bc0de"></span> Login</a></li>
+                  <%}%>
             </ul>
           </div>
       </nav>
