@@ -86,7 +86,11 @@ router.post('/login',function(req,res,next){
   })
 })
 
-
+//insert data into database
+router.get('/insert', function(req, res, next) {
+  var user = localStorage.getItem('loginUser');
+  res.render('insert', { title: 'Stock Manager',username:user });
+});
 
 
 
