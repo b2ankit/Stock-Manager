@@ -14,6 +14,8 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 
 var adminLoginModel = require('../modules/login');
 
+var stockModel = require('../modules/stock')
+
 
 
 
@@ -92,6 +94,27 @@ router.get('/insert', function(req, res, next) {
   res.render('insert', { title: 'Stock Manager',username:user });
 });
 
+router.get('/show', function(req, res, next) {
+  var user = localStorage.getItem('loginUser');
+  res.render('show', { title: 'Stock Manager',username:user });
+});
+
+
+router.post('/insert',function(req,res,next){
+  var stockDetails = new stockModel({
+    category:req.body.category,
+    cementName:req.body.cementName,
+    quantity:req.body.bag,
+    date:req.body.date
+
+})
+stockDetails.save(function(err,res1){
+  if(err) throw err;
+  console.log('inserted');
+})
+
+
+})
 
 
 
