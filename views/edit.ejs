@@ -46,35 +46,35 @@
       <div class="container">
           <div class="insertform">
               <div class="jumbotron">
-                        <form action="/insert" method="post">
-                            <h2 style="text-align: center; font-size: 24px;padding-bottom: 30px;">Enter Details</h2>
+                        <form action="/update" method="post">
+                            <h2 style="text-align: center; font-size: 24px;padding-bottom: 30px;">Edit Details</h2>
                             
-                            
+                            <input type="hidden" name="id" value="<%= records._id%>">
                             <div class="form-group">
                                 <select class="form-control" name="category" required="required">
-                                            <option value="">Select Category</option>
-                                            <option value="Buy">Buy</option>
-                                            <option value="Sell">Sell</option>
-                                                                            </select>   
+                                            <option value="" <% if(records.category=='') {%>selected<%}%>>Select Category</option>
+                                            <option value="Buy" <% if(records.category=='Buy'){%>selected<%}%>>Buy</option>
+                                            <option value="Sell" <% if(records.category=='Sell'){%> selected <%}%> >Sell</option>
+                                </select>   
                             </div>
                             <div class="form-group">
                                 <select class="form-control" name="cementName" required="required">
-                                        <option value="">Select Cement Name</option>
-                                        <option value="Lafarge">Lafarge</option>
-                                        <option value="Birla">Birla</option>
-                                        <option value="Dalmia">Dalmia</option>
-                                        <option value="Others">Others</option>
+                                        <option value="" <% if(records.cementName=='') {%>selected <%}%> >Select Cement Name</option>
+                                        <option value="Lafarge" <% if(records.cementName=='Lafarge'){%>selected<%}%>>Lafarge</option>
+                                        <option value="Birla" <% if(records.cementName=='Birla'){%>selected <%}%>>Birla</option>
+                                        <option value="Dalmia" <% if(records.cementName=='Dalmia'){%>selected<%}%>>Dalmia</option>
+                                        <option value="Others" <% if(records.cementName=='Others'){%>selected<%}%>>Others</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                    <input type="number" class="form-control" name="bag" placeholder="Quantity" required="required">
+                                    <input type="number" class="form-control" name="bag" placeholder="Quantity" required="required" value='<%= records.quantity%>'>
                             </div>
                             <div class="form-group">
-                                    <input type="date" class="form-control" name="date" placeholder="Date" data-date-format="DD MMMM YYYY" required="required">
+                                    <input type="date" class="form-control" name="date" placeholder="Date" data-date-format="DD MMMM YYYY" required="required" value='<%= records.date%>'>
                             </div>
                            
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-lg btn-block">Insert</button>
+                                <button type="submit" class="btn btn-success btn-lg btn-block">Update</button>
                             </div>
                         </form>
                     </div>

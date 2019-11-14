@@ -55,17 +55,17 @@
                 </tr>
               </thead>
               <tbody>
-                  
+                  <% records.forEach(function(row) {%>
                     <tr>
-                      <td>Lafarge</td>
-                      <td>600</td>
-                      <td>14/11/2019</td>
-                      <td>Buy</td>
-                      <td><a class="btn btn-primary btn-xs" href="#"><i class="fa fa-edit"></i></a>
-                      <a class="btn btn-danger btn-xs" href="#"><i class="fa fa-trash"></i></a></td>
+                      <td><%= row.cementName%></td>
+                      <td><%= row.quantity%></td>
+                      <td><%=row.date%></td>
+                      <td><%=row.category%></td>
+                      <td><a class="btn btn-primary btn-xs" href="/edit/<%= row._id %>"><i class="fa fa-edit"></i></a>
+                      <a class="btn btn-danger btn-xs" href="/delete/<%= row._id %>"><i class="fa fa-trash"></i></a></td>
                     </tr>
                    
-                
+                <%})%>
               </tbody>
             </table>
             

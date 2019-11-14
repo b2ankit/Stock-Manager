@@ -16,6 +16,8 @@ var adminLoginModel = require('../modules/login');
 
 var stockModel = require('../modules/stock')
 
+var stock = stockModel.find({});
+
 
 
 
@@ -94,12 +96,18 @@ router.get('/insert', function(req, res, next) {
   res.render('insert', { title: 'Stock Manager',username:user });
 });
 
+
+//code to show the database
 router.get('/show', function(req, res, next) {
   var user = localStorage.getItem('loginUser');
-  res.render('show', { title: 'Stock Manager',username:user });
+  
+  stock.exec(function(err,data){
+    if(err) throw err;
+    res.render('show', { title: 'Stock Manager',username:user,records:data });
+  })
 });
 
-
+//code for insert data into database
 router.post('/insert',function(req,res,next){
   var stockDetails = new stockModel({
     category:req.body.category,
@@ -110,13 +118,49 @@ router.post('/insert',function(req,res,next){
 })
 stockDetails.save(function(err,res1){
   if(err) throw err;
-  console.log('inserted');
+  res.redirect('/show')
+})
 })
 
 
+//code for delete entry from database
+router.get('/delete/:id',function(req,res,next){
+  var id = req.params.id;
+  var del = stockModel.findByIdAndDelete(id);
+  del.exec(function(err,data){
+    if(err) throw err
+    res.redirect('/show')
+  })
 })
 
 
+//code for edit
+router.get('/edit/:id',function(req,res,next){
+  var id = req.params.id;
+  var edit = stockModel.findById(id);
+  edit.exec(function(err,data){
+    if(err) throw err
+    var user = localStorage.getItem('loginUser');
+    res.render('edit',{ title: 'Stock Manager',username:user,records:data });
+  })
+})
+
+
+//code for update data
+router.post('/update',function(req,res,next){
+  var update = stockModel.findByIdAndUpdate(req.body.id,{
+    category:req.body.category,
+    cementName:req.body.cementName,
+    quantity:req.body.bag,
+    date:req.body.date
+
+  });
+
+  update.exec(function(err,data){
+    if(err) throw err;
+    res.redirect('/show')
+  })
+})
 
 //Logout route
 router.get('/logout', function(req, res, next) {
