@@ -19,7 +19,19 @@ var stockModel = require('../modules/stock')
 var stock = stockModel.find({});
 
 
+// Defining Middleware .....
 
+
+function checkLoginUser(req,res,next){
+  var usertkn = localStorage.getItem('userToken');
+  try{
+    jwt.verify(usertkn,'LoginToken');
+  }
+  catch(err){
+    res.redirect('/');
+  }
+  next();
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -91,14 +103,14 @@ router.post('/login',function(req,res,next){
 })
 
 //insert data into database
-router.get('/insert', function(req, res, next) {
+router.get('/insert',checkLoginUser, function(req, res, next) {
   var user = localStorage.getItem('loginUser');
   res.render('insert', { title: 'Stock Manager',username:user });
 });
 
 
 //code to show the database
-router.get('/show', function(req, res, next) {
+router.get('/show',checkLoginUser, function(req, res, next) {
   var user = localStorage.getItem('loginUser');
   
   stock.exec(function(err,data){
@@ -108,7 +120,7 @@ router.get('/show', function(req, res, next) {
 });
 
 //code for insert data into database
-router.post('/insert',function(req,res,next){
+router.post('/insert',checkLoginUser,function(req,res,next){
   var stockDetails = new stockModel({
     category:req.body.category,
     cementName:req.body.cementName,
@@ -124,7 +136,7 @@ stockDetails.save(function(err,res1){
 
 
 //code for delete entry from database
-router.get('/delete/:id',function(req,res,next){
+router.get('/delete/:id',checkLoginUser,function(req,res,next){
   var id = req.params.id;
   var del = stockModel.findByIdAndDelete(id);
   del.exec(function(err,data){
@@ -135,7 +147,7 @@ router.get('/delete/:id',function(req,res,next){
 
 
 //code for edit
-router.get('/edit/:id',function(req,res,next){
+router.get('/edit/:id',checkLoginUser,function(req,res,next){
   var id = req.params.id;
   var edit = stockModel.findById(id);
   edit.exec(function(err,data){
@@ -147,7 +159,7 @@ router.get('/edit/:id',function(req,res,next){
 
 
 //code for update data
-router.post('/update',function(req,res,next){
+router.post('/update',checkLoginUser,function(req,res,next){
   var update = stockModel.findByIdAndUpdate(req.body.id,{
     category:req.body.category,
     cementName:req.body.cementName,
