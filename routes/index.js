@@ -12,11 +12,18 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 }
 
 
+
+
 var adminLoginModel = require('../modules/login');
 
 var stockModel = require('../modules/stock')
 
 var stock = stockModel.find({});
+
+var sellrecords = stockModel.aggregate([{$match:{"category":"Sell"}},{$group:{_id:"$cementName",total:{$sum:"$quantity"}}}]);
+
+var buyrecords = stockModel.aggregate([{$match:{"category":"Buy"}},{$group:{_id:"$cementName",total:{$sum:"$quantity"}}}]);
+
 
 
 // Defining Middleware .....
@@ -35,8 +42,24 @@ function checkLoginUser(req,res,next){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  
   var user = localStorage.getItem('loginUser');
-  res.render('index', { title: 'Stock Manager',username:user });
+
+
+
+  sellrecords.exec(function(err,data1){
+    if(err) throw err
+    console.log('Sell details:',data1);
+    })
+    
+      buyrecords.exec(function(err,data2){
+      if(err) throw err;
+      console.log("buy details:", data2);
+    })
+
+  
+  res.render('index', { title: 'Stock Manager',username:user});
+  
 });
 
 router.get('/records',function(req,res,next){
@@ -115,6 +138,7 @@ router.get('/show',checkLoginUser, function(req, res, next) {
   
   stock.exec(function(err,data){
     if(err) throw err;
+    console.log(data);
     res.render('show', { title: 'Stock Manager',username:user,records:data });
   })
 });
