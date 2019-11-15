@@ -35,7 +35,7 @@ function checkLoginUser(req,res,next){
     jwt.verify(usertkn,'LoginToken');
   }
   catch(err){
-    res.redirect('/');
+    res.redirect('/login');
   }
   next();
 }
@@ -197,6 +197,21 @@ router.post('/update',checkLoginUser,function(req,res,next){
     res.redirect('/show')
   })
 })
+
+
+//code for search by name
+router.post('/search',checkLoginUser,function(req,res,next){
+  var searchname = req.body.name;
+  // console.log(searchname);
+  var filtercement = stockModel.find({cementName:searchname});
+  filtercement.exec(function(err,data){
+    if(err) throw err;
+    var user = localStorage.getItem('loginUser');
+    res.render('show', { title: 'Stock Manager',username:user,records:data });
+  })
+})
+
+
 
 //Logout route
 router.get('/logout', function(req, res, next) {

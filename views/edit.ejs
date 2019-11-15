@@ -39,6 +39,13 @@
                   <%if(username==null){%>
                     <li style="padding-right: 20px;"><a href="/login" style="color: #5bc0de;"><span class="glyphicon glyphicon-log-in" style="color:#5bc0de"></span> Login</a></li>
                   <%}%>
+
+                  <form class="navbar-form navbar-left" action="/search" method="post">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Enter Cement Name" name="name">
+                    </div>
+                    <button type="submit" value="search" class="btn btn-success">Search</button>
+                  </form>
             </ul>
           </div>
       </nav>
