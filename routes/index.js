@@ -49,16 +49,23 @@ router.get('/', function(req, res, next) {
 
   sellrecords.exec(function(err,data1){
     if(err) throw err
-    console.log('Sell details:',data1);
-    })
     
-      buyrecords.exec(function(err,data2){
+  
+
+    buyrecords.exec(function(err,data2){
       if(err) throw err;
-      console.log("buy details:", data2);
+      
+
+      res.render('index', { title: 'Stock Manager',username:user,sell:data1,buy:data2});
+
     })
 
+
+    })
+    
+     
   
-  res.render('index', { title: 'Stock Manager',username:user});
+  
   
 });
 
@@ -114,7 +121,7 @@ router.post('/login',function(req,res,next){
 
         //Save login username in Local Storage
         localStorage.setItem('loginUser',user);
-        res.render('index',{title:'Stock Manager',username:user})
+        res.redirect("/");
       }
       else{
         var msg = 'Invalid Username/Password'
