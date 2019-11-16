@@ -60,6 +60,44 @@
 
 
 
+      <!-- for Selling data -->
+
+          <%sell.forEach(function(row){
+            if(row._id==="Lafarge"){%>
+              <input type="hidden" id="Lafargesell" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%sell.forEach(function(row){
+            if(row._id==="Birla"){%>
+              <input type="hidden" id="Birlasell" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%sell.forEach(function(row){
+            if(row._id==="Dalmia"){%>
+              <input type="hidden" id="Dalmiasell" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%sell.forEach(function(row){
+            if(row._id==="Others"){%>
+              <input type="hidden" id="Othersell" value="<%= row.total%>"><%}%>            
+          <%})%>
+
+          <!-- buying details -->
+          <%buy.forEach(function(row){
+            if(row._id==="Lafarge"){%>
+              <input type="hidden" id="Lafargebuy" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%buy.forEach(function(row){
+            if(row._id==="Birla"){%>
+              <input type="hidden" id="Birlabuy" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%buy.forEach(function(row){
+            if(row._id==="Dalmia"){%>
+              <input type="hidden" id="Dalmiabuy" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%buy.forEach(function(row){
+            if(row._id==="Others"){%>
+              <input type="hidden" id="Otherbuy" value="<%= row.total%>"><%}%>            
+          <%})%>
+        
+
 
 
 
@@ -75,6 +113,28 @@
       </footer>
 
       <script>
+
+
+            var lafarge_sell = parseInt(document.getElementById("Lafargesell").value);
+            var birla_sell = parseInt(document.getElementById("Birlasell").value);
+            var dalmia_sell = parseInt(document.getElementById("Dalmiasell").value);
+            var others_sell = parseInt(document.getElementById("Othersell").value);
+
+
+
+            var lafarge_buy = parseInt(document.getElementById("Lafargebuy").value);
+            var birla_buy = parseInt(document.getElementById("Birlabuy").value);
+            var dalmia_buy = parseInt(document.getElementById("Dalmiabuy").value);
+            var others_buy = parseInt(document.getElementById("Otherbuy").value);
+
+
+            var lafarge_stock = lafarge_buy-lafarge_sell;
+            var birla_stock = birla_buy-birla_sell;
+            var dalmia_stock = dalmia_buy-dalmia_sell;
+            var other_stock = others_buy-others_sell;
+
+
+
           var barChart = document.getElementById('barChart').getContext('2d');
           Chart.defaults.global.defaultFontFamily = 'Lato';
           Chart.defaults.global.defaultFontSize = 15;
@@ -85,7 +145,7 @@
                   labels:['Lafarge','Birla Gold','Dalmia','others'],
                   datasets:[{
                       label:'Cement',
-                      data:[4000,2500,300,150],
+                      data:[lafarge_stock,birla_stock,dalmia_stock,other_stock],
                       backgroundColor:['#5cb85c','#f0ad4e','#5bc0de','#292b2c'],
                       
                       hoverBorderWidth:2,

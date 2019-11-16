@@ -76,7 +76,21 @@ router.get('/records',function(req,res,next){
 
 router.get('/Stocks',function(req,res,next){
   var user = localStorage.getItem('loginUser');
-  res.render('stocks',{title:'Stock Manager',username:user})
+  sellrecords.exec(function(err,data1){
+    if(err) throw err
+    
+  
+
+    buyrecords.exec(function(err,data2){
+      if(err) throw err;
+      
+
+      res.render('stocks', { title: 'Stock Manager',username:user,sell:data1,buy:data2});
+
+    })
+
+
+    })
 })
 
 router.get('/login',function(req,res,next){
