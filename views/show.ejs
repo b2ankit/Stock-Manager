@@ -55,9 +55,11 @@
               <thead">
                 <tr  style="background-color: rgb(36, 31, 31); color: white; ">
                   <th style="text-align: center; padding: 10px;">Cement Name</th>
+                  <th style="text-align: center; padding: 10px;">Month</th> 
                   <th style="text-align: center; padding: 10px;">Quantity</th>
                   <th style="text-align: center; padding: 10px;">Date</th>
                   <th style="text-align: center; padding: 10px;">Status</th> 
+                  
                   <th style="text-align: center; padding: 10px;">Action</th>
                 </tr>
               </thead>
@@ -66,8 +68,10 @@
                     <tr>
                       
                       <td><%= row.cementName%></td>
+                      <td><%=row.month%></td>
                       <td><%= row.quantity%></td>
                       <td><%=row.date%></td>
+                      
                       <td><%=row.category%></td>
                       <td><a class="btn btn-primary btn-xs" href="/edit/<%= row._id %>"><i class="fa fa-edit"></i></a>
                       <a class="btn btn-danger btn-xs" href="/delete/<%= row._id %>"><i class="fa fa-trash"></i></a></td>

@@ -11,6 +11,7 @@ var stockSchema = new mongoose.Schema({
     cementName:String,
     quantity:Number,
     date:String,
+    month:String,
 
 })
 

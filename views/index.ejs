@@ -99,7 +99,84 @@
             if(row._id==="Others"){%>
               <input type="hidden" id="Otherbuy" value="<%= row.total%>"><%}%>            
           <%})%>
+
+          <!-- Sell records per month -->
+
+
+
+
+
+
+
+
+
+
+
+
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-01"){%>
+
+              <% if(row.total!==null){%><input type="hidden" id="January" value="<%= row.total%>"><%}%>
+              <input type="hidden" id="January" value="0"><%}%>            
+          <%})%>
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-02"){%>
+              <input type="hidden" id="February" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-03"){%>
+              <input type="hidden" id="March" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-04"){%>
+              <input type="hidden" id="April" value="<%= row.total%>"><%}%>            
+          <%})%>
+
+
+
+
+
+
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-05"){%>
+              <input type="hidden" id="May" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-06"){%>
+              <input type="hidden" id="June" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-07"){%>
+              <input type="hidden" id="July" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-08"){%>
+              <input type="hidden" id="August" value="<%= row.total%>"><%}%>            
+          <%})%>
         
+
+          
+
+
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-09"){%>
+
+              <% if(row.total!==null){%><input type="hidden" id="September" value="<%= row.total%>"><%}%>
+              <input type="hidden" id="September" value="0"><%}%>            
+          <%})%>
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-10"){%>
+              <input type="hidden" id="October" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-11"){%>
+              <input type="hidden" id="November" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%sellmonth.forEach(function(row){
+            if(row._id==="2019-12"){%>
+              <input type="hidden" id="December" value="<%= row.total%>"><%}%>            
+          <%})%>
+
     
 
 
@@ -167,8 +244,103 @@
             var dalmia_buy = parseInt(document.getElementById("Dalmiabuy").value);
             var others_buy = parseInt(document.getElementById("Otherbuy").value);
 
-              
-     
+            
+
+
+            // code for sell per month
+
+            var jan,feb,mar,apr,may,jun,jul,aug,sept,oct,nov,dec;
+
+            
+            var January = document.getElementById("January");
+            var February = document.getElementById("February");
+            var March = document.getElementById("March");
+            var April = document.getElementById("April");
+            var May = document.getElementById("May");
+            var June = document.getElementById("June");
+            var July = document.getElementById("July");
+            var August = document.getElementById("August");
+            var September = document.getElementById("September");
+            var October = document.getElementById("October");
+            var November = document.getElementById("November");
+            var December = document.getElementById("December");
+
+
+
+            if(January!==null){
+              var jan = parseInt(January.value);
+            }
+            else{
+              var jan = 0;
+            }
+
+            if(February!==null){
+                  var feb = parseInt(February.value);
+            }
+            else{
+                  var feb = 0;
+            }
+            if(March!==null){
+              var mar = parseInt(March.value);
+            }
+            else{
+              var mar = 0;
+            }
+            if(April!==null){
+              var apr = parseInt(April.value);
+            }
+            else{
+              var apr=0;
+            }
+            if(May!==null){
+              var may = parseInt(April.value);
+            }
+            else{
+              var may = 0;
+            }
+            if(June!==null){
+              var jun = parseInt(June.value);
+            }
+            else{
+              var jun=0;
+            }
+            if(July!==null){
+              var jul = parseInt(July.value);
+            }
+            else{
+              var jul =0;
+            }
+            if(August!==null){
+              var aug = parseInt(August.value);
+            }
+            else{
+              var aug = 0;
+            }
+            if(September!==null){
+              var sept = parseInt(September.value);
+            }
+            else{
+              var sept = 0;
+            }
+            if(October!==null){
+              var oct = parseInt(October.value);
+            }
+            else{
+              var oct = 0;
+            }
+            if(November!==null){
+              var nov = parseInt(November.value);
+            }
+            else{
+              var nov = 0;
+            }
+            if(December!==null){
+              var dec = parseInt(December.value);
+            }
+            else{
+              var dec = 0;
+            }
+
 
         
           var barChart = document.getElementById('barChart').getContext('2d');
@@ -284,7 +456,7 @@
         borderColor:'#5cb85c',
         pointBackgroundColor:'#292b2c',
       label:'Cements',
-      data:[5000,6000,7000,6500,6000,7000,8200,6500,6700,9000,10000,9500],
+      data:[jan,feb,mar,apr,may,jun,jul,aug,sept,oct,nov,dec],
       // backgroundColor:['#28AF65','#E7D607','#0783B9','#983558'],
       // hoverBorderWidth:2,
       // hoverBorderColor:'grey',

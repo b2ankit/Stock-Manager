@@ -24,6 +24,9 @@ var sellrecords = stockModel.aggregate([{$match:{"category":"Sell"}},{$group:{_i
 
 var buyrecords = stockModel.aggregate([{$match:{"category":"Buy"}},{$group:{_id:"$cementName",total:{$sum:"$quantity"}}}]);
 
+var monthsell = stockModel.aggregate([{$match:{"category":"Sell"}},{$group:{_id:"$month",total:{$sum:"$quantity"}}}]);
+
+
 
 
 // Defining Middleware .....
@@ -55,8 +58,11 @@ router.get('/', function(req, res, next) {
     buyrecords.exec(function(err,data2){
       if(err) throw err;
       
-
-      res.render('index', { title: 'Stock Manager',username:user,sell:data1,buy:data2});
+      monthsell.exec(function(err,data3){
+        if(err) throw err;
+        res.render('index', { title: 'Stock Manager',username:user,sell:data1,buy:data2,sellmonth:data3});
+      })
+      
 
     })
 
@@ -159,7 +165,6 @@ router.get('/show',checkLoginUser, function(req, res, next) {
   
   stock.exec(function(err,data){
     if(err) throw err;
-    console.log(data);
     res.render('show', { title: 'Stock Manager',username:user,records:data });
   })
 });
@@ -170,7 +175,8 @@ router.post('/insert',checkLoginUser,function(req,res,next){
     category:req.body.category,
     cementName:req.body.cementName,
     quantity:req.body.bag,
-    date:req.body.date
+    date:req.body.date,
+    month:req.body.month
 
 })
 stockDetails.save(function(err,res1){
@@ -209,7 +215,8 @@ router.post('/update',checkLoginUser,function(req,res,next){
     category:req.body.category,
     cementName:req.body.cementName,
     quantity:req.body.bag,
-    date:req.body.date
+    date:req.body.date,
+    month:req.body.month
 
   });
 
