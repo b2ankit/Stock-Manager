@@ -116,8 +116,8 @@
           <%sellmonth.forEach(function(row){
             if(row._id==="2019-01"){%>
 
-              <% if(row.total!==null){%><input type="hidden" id="January" value="<%= row.total%>"><%}%>
-              <input type="hidden" id="January" value="0"><%}%>            
+              <input type="hidden" id="January" value="<%= row.total%>">
+              <%}%>            
           <%})%>
           <%sellmonth.forEach(function(row){
             if(row._id==="2019-02"){%>
@@ -161,8 +161,8 @@
           <%sellmonth.forEach(function(row){
             if(row._id==="2019-09"){%>
 
-              <% if(row.total!==null){%><input type="hidden" id="September" value="<%= row.total%>"><%}%>
-              <input type="hidden" id="September" value="0"><%}%>            
+              <input type="hidden" id="September" value="<%= row.total%>"><%}%>
+                          
           <%})%>
           <%sellmonth.forEach(function(row){
             if(row._id==="2019-10"){%>

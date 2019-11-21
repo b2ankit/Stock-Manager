@@ -58,6 +58,81 @@
             <h3 style="color: green;">Lafarge cement per month details</h3>
           </div>
           <canvas id="lafargeChart" ></canvas>
+
+          
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-01"){%>
+
+              <input type="hidden" id="lmfjan" value="<%= row.total%>">
+              <%}%>            
+          <%})%>
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-02"){%>
+              <input type="hidden" id="lmffeb" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-03"){%>
+              <input type="hidden" id="lmfmar" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-04"){%>
+              <input type="hidden" id="lmfapr" value="<%= row.total%>"><%}%>            
+          <%})%>
+
+
+
+
+
+
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-05"){%>
+              <input type="hidden" id="lmfmay" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-06"){%>
+              <input type="hidden" id="lmfjun" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-07"){%>
+              <input type="hidden" id="lmfjul" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-08"){%>
+              <input type="hidden" id="lmfaug" value="<%= row.total%>"><%}%>            
+          <%})%>
+        
+
+          
+
+
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-09"){%>
+
+             <input type="hidden" id="lmfsep" value="<%= row.total%>"><%}%>
+                         
+          <%})%>
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-10"){%>
+              <input type="hidden" id="lmfoct" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-11"){%>
+              <input type="hidden" id="lmfnov" value="<%= row.total%>"><%}%>            
+          <%})%>
+          <%lmf.forEach(function(row){
+            if(row._id==="2019-12"){%>
+              <input type="hidden" id="lmfdec" value="<%= row.total%>"><%}%>            
+          <%})%>
+
+
+
+
+
+
+
+
+
+
       </div>
     </div>
 
@@ -114,6 +189,100 @@
           Chart.defaults.global.defaultFontColor = '#777';
 // lafarge code of bargraph.........
 
+            var Ljan,Lfeb,Lmar,Lapr,Lmay,Ljun,Ljul,Laug,Lsep,Loct,Lnov,Ldec;
+
+            var LJanuary = document.getElementById("lmfjan");
+            var LFebruary = document.getElementById("lmffeb");
+            var LMarch = document.getElementById("lmfmar");
+            var LApril = document.getElementById("lmfapr");
+            var LMay = document.getElementById("lmfmay");
+            var LJune = document.getElementById("lmfjun");
+            var LJuly = document.getElementById("lmfjul");
+            var LAugust = document.getElementById("lmfaug");
+            var LSeptember = document.getElementById("lmfsep");
+            var LOctober = document.getElementById("lmfoct");
+            var LNovember = document.getElementById("lmfnov");
+            var LDecember = document.getElementById("lmfdec");
+
+
+
+
+            if(LJanuary!==null){
+              var Ljan = parseInt(LJanuary.value);
+            }
+            else{
+              var Ljan = 0;
+            }
+
+            if(LFebruary!==null){
+                  var Lfeb = parseInt(LFebruary.value);
+            }
+            else{
+                  var Lfeb = 0;
+            }
+            if(LMarch!==null){
+              var Lmar = parseInt(LMarch.value);
+            }
+            else{
+              var Lmar = 0;
+            }
+            if(LApril!==null){
+              var Lapr = parseInt(LApril.value);
+            }
+            else{
+              var Lapr=0;
+            }
+            if(LMay!==null){
+              var Lmay = parseInt(LApril.value);
+            }
+            else{
+              var Lmay = 0;
+            }
+            if(LJune!==null){
+              var Ljun = parseInt(LJune.value);
+            }
+            else{
+              var Ljun=0;
+            }
+            if(LJuly!==null){
+              var Ljul = parseInt(LJuly.value);
+            }
+            else{
+              var Ljul =0;
+            }
+            if(LAugust!==null){
+              var Laug = parseInt(LAugust.value);
+            }
+            else{
+              var Laug = 0;
+            }
+            if(LSeptember!==null){
+              var Lsep = parseInt(LSeptember.value);
+            }
+            else{
+              var Lsep = 0;
+            }
+            if(LOctober!==null){
+              var Loct = parseInt(LOctober.value);
+            }
+            else{
+              var Loct = 0;
+            }
+            if(LNovember!==null){
+              var Lnov = parseInt(LNovember.value);
+            }
+            else{
+              var Lnov = 0;
+            }
+            if(LDecember!==null){
+              var Ldec = parseInt(LDecember.value);
+            }
+            else{
+              var Ldec = 0;
+            }
+
+
+
           var lafargeChart = document.getElementById('lafargeChart').getContext('2d');
           var mylafargechart = new Chart(lafargeChart,{
               type:'bar',
@@ -125,7 +294,7 @@
                       barThickness: 6,
                       maxBarThickness: 8,
                       minBarLength: 2,
-                      data:[5000,6000,7000,6500,6000,7000,8200,6500,6700,9000,10000,9500],
+                      data:[Ljan,Lfeb,Lmar,Lapr,Lmay,Ljun,Ljul,Laug,Lsep,Loct,Lnov,Ldec],
                     //   backgroundColor:['#5cb35c','#f1ad4e','#5bc5de','#212b11','#5cb85c','#f0ad4e','#5bc0de','#292b2c','#51b854','#f1bd2e','#4b101e','#202c2b'],
                     backgroundColor:['#0275d8','#5cb85c','#5bc0de','#f0ad4e','#d9534f','#292b2c','#0275d8','#5cb85c','#5bc0de','#f0ad4e','#d9534f','#292b2c'],
                       
@@ -169,6 +338,7 @@
 
 
 // Birla Gold Code of Bargraph
+
 
 var birlaChart = document.getElementById('birlaChart').getContext('2d');
           var mybirlachart = new Chart(birlaChart,{

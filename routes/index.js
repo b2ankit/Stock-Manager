@@ -27,6 +27,10 @@ var buyrecords = stockModel.aggregate([{$match:{"category":"Buy"}},{$group:{_id:
 var monthsell = stockModel.aggregate([{$match:{"category":"Sell"}},{$group:{_id:"$month",total:{$sum:"$quantity"}}}]);
 
 
+var lafargemonthSell = stockModel.aggregate([ {$match:{$and:[{cementName:"Lafarge"},{category:"Sell"}]}}, {$group:{_id:"$month",total:{$sum:"$quantity"}}} ]);
+
+
+
 
 
 // Defining Middleware .....
@@ -75,10 +79,23 @@ router.get('/', function(req, res, next) {
   
 });
 
+
+
+
 router.get('/records',function(req,res,next){
   var user = localStorage.getItem('loginUser');
-  res.render('records',{title:'Stock Manager',username:user})
+  
+
+  lafargemonthSell.exec(function(err,lmf){
+    if(err) throw err
+    res.render('records',{title:'Stock Manager',username:user,lmf:lmf})
+
+  })
 })
+
+
+
+
 
 router.get('/Stocks',function(req,res,next){
   var user = localStorage.getItem('loginUser');
