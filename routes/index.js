@@ -28,6 +28,9 @@ var monthsell = stockModel.aggregate([{$match:{"category":"Sell"}},{$group:{_id:
 
 
 var lafargemonthSell = stockModel.aggregate([ {$match:{$and:[{cementName:"Lafarge"},{category:"Sell"}]}}, {$group:{_id:"$month",total:{$sum:"$quantity"}}} ]);
+var birlamonthSell = stockModel.aggregate([ {$match:{$and:[{cementName:"Birla"},{category:"Sell"}]}}, {$group:{_id:"$month",total:{$sum:"$quantity"}}} ]);
+var dalmiamonthSell = stockModel.aggregate([ {$match:{$and:[{cementName:"Dalmia"},{category:"Sell"}]}}, {$group:{_id:"$month",total:{$sum:"$quantity"}}} ]);
+var othermonthSell = stockModel.aggregate([ {$match:{$and:[{cementName:"Others"},{category:"Sell"}]}}, {$group:{_id:"$month",total:{$sum:"$quantity"}}} ]);
 
 
 
@@ -88,7 +91,21 @@ router.get('/records',function(req,res,next){
 
   lafargemonthSell.exec(function(err,lmf){
     if(err) throw err
-    res.render('records',{title:'Stock Manager',username:user,lmf:lmf})
+
+    birlamonthSell.exec(function(err,bmf){
+      if(err) throw err
+
+      dalmiamonthSell.exec(function(err,dmf){
+        if(err) throw err
+        othermonthSell.exec(function(err,omf){
+          if(err) throw err
+          res.render('records',{title:'Stock Manager',username:user,lmf:lmf,bmf:bmf,dmf:dmf,omf:omf})
+        })
+      })
+    })
+
+
+    
 
   })
 })
